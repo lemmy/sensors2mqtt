@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sensors2MQTT</string>
+    <string name="action_settings">Settings</string>
+    <string name="broker_host">Broker Host</string>
+    <string name="broker_port">Broker Port</string>
+    <string name="m2m_eclipse_org">m2m.eclipse.org</string>
+    <string name="port_1883">1883</string>
+    <string name="broker_topic_prefix">Topic Prefix</string>
+    <string name="start">Start</string>
+    <string name="topic_prefix">chooseATopic/</string>
+
+</resources>
