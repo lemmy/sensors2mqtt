@@ -1,32 +1,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SensorActivity" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="77dp" >
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/scrollView1"
+        android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/broker_host" />
 
         <EditText
             android:id="@+id/hostname"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:ems="10"
             android:hint="@string/m2m_eclipse_org"
-            android:text="@string/m2m_eclipse_org" />
+            android:text="@string/m2m_eclipse_org" >
+
+            <requestFocus />
+        </EditText>
 
         <TextView
             android:id="@+id/textView2"
@@ -41,8 +55,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/port_1883"
-            android:text="@string/port_1883" >
-        </EditText>
+            android:text="@string/port_1883" />
 
         <TextView
             android:id="@+id/TextView01"
@@ -55,18 +68,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/topic_prefix"
-            android:text="@string/topic_prefix"/>
+            android:text="@string/topic_prefix" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sliding_window_size" />
+
+        <EditText
+            android:id="@+id/windowSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/window_size" />
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
-            android:text="@string/start"
-            android:onClick="start" >
+            android:onClick="start"
+            android:text="@string/start" />
 
-            <requestFocus />
-        </Button>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="stop"
+            android:text="@string/stop" />
     </LinearLayout>
 
 </RelativeLayout>

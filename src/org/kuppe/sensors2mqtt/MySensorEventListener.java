@@ -12,20 +12,27 @@ package org.kuppe.sensors2mqtt;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.paho.client.mqttv3.MqttClient;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.util.Log;
 
 public class MySensorEventListener implements SensorEventListener {
 
-	private static final int WINDOW_SIZE = 30;
+	private static final String TAG = "org.kuppe.sensors2mqtt";
 	
-	private final MyAsyncTask denoiseAndPush;
+	private List<Float> readings = new ArrayList<Float>();
 
-	private List<Float> readings = new ArrayList<Float>(WINDOW_SIZE);
+	private final MqttClient client;
+	private final String topic;
+	private final int windowSize;
 
-	public MySensorEventListener(MyAsyncTask myAsyncTask) {
-		this.denoiseAndPush = myAsyncTask;
+	public MySensorEventListener(MqttClient client, String topic, int windowSize) {
+		this.client = client;
+		this.topic = topic;
+		this.windowSize = windowSize;
 	}
 
 	// send via mqtt
@@ -34,15 +41,17 @@ public class MySensorEventListener implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		//TODO for temperature readings the first value is set
 		readings.add(event.values[0]);
+		Log.d(TAG, "Sensorreading");
 		
 		// If this listener has received more than WINDOW_SIZE readings, lets
 		// denoise/remove outliers.
-		if (readings.size() > WINDOW_SIZE) {
+		if (readings.size() > windowSize) {
 			synchronized (readings) {
-				if (readings.size() > WINDOW_SIZE) {
+				if (readings.size() > windowSize) {
+					Log.d(TAG, "DenoiseAndPush");
 					final List<Float> c = readings;
-					readings = new ArrayList<Float>(WINDOW_SIZE);
-					denoiseAndPush.execute(c);
+					readings = new ArrayList<Float>(windowSize);
+					new MyAsyncTask(client, topic).execute(c);
 				}
 			}
 		}
