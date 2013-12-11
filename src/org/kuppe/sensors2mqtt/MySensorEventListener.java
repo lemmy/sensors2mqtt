@@ -45,6 +45,8 @@ public class MySensorEventListener implements SensorEventListener {
 		
 		// If this listener has received more than WINDOW_SIZE readings, lets
 		// denoise/remove outliers.
+		// TODO Not sure if the event listener is indeed called concurrently by
+		// the underlying OS. But better be safe than sorry.
 		if (readings.size() > windowSize) {
 			synchronized (readings) {
 				if (readings.size() > windowSize) {

@@ -11,7 +11,7 @@
     <string name="start">Start</string>
     <string name="topic_prefix">chooseATopic/</string>
     <string name="stop">stop</string>
-    <string name="sliding_window_size">Sliding window size</string>
+    <string name="sliding_window_size">Sliding window size (for denoising)</string>
     <string name="window_size">3</string>
 
 </resources>

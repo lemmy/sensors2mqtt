@@ -12,8 +12,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="77dp" >
+        android:layout_alignParentTop="true">
 
     </ScrollView>
 
@@ -24,49 +23,32 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
+        <Button
+            android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/broker_host" />
+            android:onClick="start"
+            android:text="@string/start" />
 
-        <EditText
-            android:id="@+id/hostname"
+        <Button
+            android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="@string/m2m_eclipse_org"
-            android:text="@string/m2m_eclipse_org" >
-
-            <requestFocus />
-        </EditText>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/broker_port" />
-
-        <EditText
-            android:id="@+id/port"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/port_1883"
-            android:text="@string/port_1883" />
+            android:enabled="false"
+            android:onClick="stop"
+            android:text="@string/stop" />
 
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/broker_port" />
+            android:text="@string/broker_topic_prefix" />
 
         <EditText
             android:id="@+id/topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:hint="@string/topic_prefix"
             android:text="@string/topic_prefix" />
 
@@ -82,23 +64,38 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="@string/window_size" />
+            android:text="@string/window_size" >
 
-        <Button
-            android:id="@+id/button1"
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:onClick="start"
-            android:text="@string/start" />
+            android:text="@string/broker_host" />
 
-        <Button
-            android:id="@+id/button2"
+        <EditText
+            android:id="@+id/hostname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:onClick="stop"
-            android:text="@string/stop" />
+            android:ems="10"
+            android:hint="@string/m2m_eclipse_org"
+            android:text="@string/m2m_eclipse_org" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/broker_port" />
+
+        <EditText
+            android:id="@+id/port"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/port_1883"
+            android:text="@string/port_1883" />
     </LinearLayout>
 
 </RelativeLayout>
